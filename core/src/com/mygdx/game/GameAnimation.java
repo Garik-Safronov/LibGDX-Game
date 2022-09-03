@@ -3,31 +3,35 @@ package com.mygdx.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class GameAnimation {
 
-    private Texture img;
+//    private Texture img;
+    private TextureAtlas atlas;
     private Animation <TextureRegion> anm;
     private float time;
 
     public GameAnimation(String name, int col, int row, Animation.PlayMode playMode){
-        img = new Texture(name);
+//        img = new Texture(name);
+//
+//        TextureRegion region = new TextureRegion(img);
+//        int xCnt = region.getRegionWidth() / col;
+//        int yCnt = region.getRegionHeight() / row;
+//
+//        TextureRegion[][] regions = region.split(xCnt, yCnt);
+//        TextureRegion[] region1 = new TextureRegion[regions.length * regions[0].length];
+//
+//        int index = 0;
+//        for (int i = 0; i < regions.length; i++) {
+//            for (int j = 0; j < regions[0].length; j++) {
+//                region1[index++] = regions[i][j];
+//            }
+//        }
+        atlas = new TextureAtlas("atlas/pokemons.atlas");
 
-        TextureRegion region = new TextureRegion(img);
-        int xCnt = region.getRegionWidth() / col;
-        int yCnt = region.getRegionHeight() / row;
-
-        TextureRegion[][] regions = region.split(xCnt, yCnt);
-        TextureRegion[] region1 = new TextureRegion[regions.length * regions[0].length];
-
-        int index = 0;
-        for (int i = 0; i < regions.length; i++) {
-            for (int j = 0; j < regions[0].length; j++) {
-                region1[index++] = regions[i][j];
-            }
-        }
-        anm = new Animation<TextureRegion>(1/15f, region1);
+        anm = new Animation<TextureRegion>(1/15f, atlas.findRegions("green"));
         anm.setPlayMode(playMode);
 
         time += Gdx.graphics.getDeltaTime();
@@ -54,6 +58,7 @@ public class GameAnimation {
     }
 
     public void dispose(){
-        img.dispose();
+//        img.dispose();
+        atlas.dispose();
     }
 }
