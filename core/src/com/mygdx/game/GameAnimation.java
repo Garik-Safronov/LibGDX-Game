@@ -13,6 +13,15 @@ public class GameAnimation {
     private Animation <TextureRegion> anm;
     private float time;
 
+    public GameAnimation(String path, String animationType, Animation.PlayMode playMode){
+        atlas = new TextureAtlas(path);
+        anm = new Animation<TextureRegion>(1/15f, atlas.findRegions(animationType));
+        anm.setPlayMode(playMode);
+
+        time += Gdx.graphics.getDeltaTime();
+
+    }
+
     public GameAnimation(String name, int col, int row, Animation.PlayMode playMode){
 //        img = new Texture(name);
 //
