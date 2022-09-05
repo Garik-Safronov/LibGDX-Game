@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" width="64" height="16" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="62">
+<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" width="64" height="16" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="98">
  <tileset firstgid="1" name="t0" tilewidth="32" tileheight="32" tilecount="3072" columns="64">
   <image source="t0.png" width="2048" height="1536"/>
   <tile id="3051">
@@ -29,35 +29,196 @@
   </data>
  </layer>
  <objectgroup id="7" name="Объекты">
-  <object id="54" x="0.666667" y="448.667" width="2044.67" height="63.3333">
+  <object id="54" name="Земля" x="0.666667" y="448.667" width="2044.67" height="63.3333">
    <properties>
     <property name="BodyType" value="StaticBody"/>
     <property name="gravityScale" type="float" value="1"/>
     <property name="restitution" type="float" value="1"/>
    </properties>
   </object>
-  <object id="55" x="288.667" y="416" width="126.333" height="32.3333">
+  <object id="55" name="Земля" x="288.667" y="416" width="126.333" height="32.3333">
    <properties>
     <property name="BodyType" value="StaticBody"/>
     <property name="gravityScale" type="float" value="1"/>
     <property name="restitution" type="float" value="1"/>
    </properties>
   </object>
-  <object id="56" x="320.333" y="384.667" width="95.3333" height="62">
+  <object id="56" name="Земля" x="320.333" y="384.667" width="95.3333" height="62">
    <properties>
     <property name="BodyType" value="StaticBody"/>
     <property name="gravityScale" type="float" value="1"/>
     <property name="restitution" type="float" value="1"/>
    </properties>
   </object>
-  <object id="57" x="351.667" y="352" width="64.3333" height="95">
+  <object id="57" name="Земля" x="351.667" y="352" width="64.3333" height="95">
    <properties>
     <property name="BodyType" value="StaticBody"/>
     <property name="gravityScale" type="float" value="1"/>
     <property name="restitution" type="float" value="1"/>
    </properties>
   </object>
-  <object id="58" x="544" y="385.667" width="62.6667" height="61.3333">
+  <object id="58" name="Земля" x="544" y="385.667" width="62.6667" height="61.3333">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="62" name="Земля" x="449" y="193" width="62" height="63">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="65" name="Земля" x="450" y="224.5" width="350.5" height="31.5">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="66" name="Земля" x="737" y="161" width="62" height="95">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="68" name="Земля" x="704" y="192" width="32" height="63">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="69" name="Земля" x="705" y="321" width="94.5" height="32">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="70" name="Земля" x="1025" y="288" width="61.5" height="159">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="71" name="Земля" x="993" y="320" width="30" height="129.5">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="72" name="Земля" x="1023" y="449.5">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="73" name="Земля" x="959.5" y="352.5" width="32.5" height="96">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="74" name="Земля" x="929" y="384.5" width="29" height="64.5">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="75" name="Земля" x="896" y="415.5" width="31.5" height="32.5">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="83" name="Земля" x="1216.5" y="288" width="62.5" height="159.5">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="85" name="Земля" x="1280.5" y="320" width="32.5" height="128">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="86" name="Земля" x="1313.5" y="352.5" width="30.5" height="96">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="87" name="Земля" x="1344.5" y="385" width="32" height="62.5">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="88" name="Земля" x="1378" y="416.5" width="29" height="30.5">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="89" name="Земля" x="1408" y="223.5" width="159" height="33">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="90" name="Земля" x="1633" y="225" width="222" height="30">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="92" name="Земля" x="1920" y="353" width="129" height="30">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="93" name="Земля" x="1951.82" y="320" width="95.6818" height="33">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="94" name="Земля" x="1985" y="289" width="62.7273" height="29.5">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="95" name="Земля" x="2016.18" y="256.5" width="31.5909" height="31.5">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="97" name="Земля" x="1536" y="95" width="127" height="33.5">
    <properties>
     <property name="BodyType" value="StaticBody"/>
     <property name="gravityScale" type="float" value="1"/>
@@ -69,11 +230,11 @@
   <object id="47" name="Камера" x="325.167" y="278.667">
    <point/>
   </object>
-  <object id="59" name="Герой" x="57.8636" y="391.909" width="41.5455" height="57.3182">
+  <object id="59" name="Герой" x="60.1136" y="409.242" width="35.4622" height="37.9849">
    <properties>
     <property name="BodyType" value="DynamicBody"/>
-    <property name="gravityScale" type="float" value="2"/>
-    <property name="restitution" type="float" value="0.2"/>
+    <property name="gravityScale" type="float" value="3"/>
+    <property name="restitution" type="float" value="0.01"/>
    </properties>
   </object>
  </objectgroup>
