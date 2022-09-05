@@ -3,6 +3,8 @@ package com.mygdx.game.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -36,6 +38,9 @@ public class GameScreen implements Screen {
     private final Rectangle heroRect;
     private HeroAnimation hero;
     private boolean lookRight;
+    private Music gameMusic;
+    private Sound jumpSound;
+    public static boolean isCanJump;
 
 
     public GameScreen(Main game) {
@@ -64,6 +69,14 @@ public class GameScreen implements Screen {
         for (RectangleMapObject object : objects) {
             physics.addObject(object);
         }
+
+        gameMusic = Gdx.audio.newMusic(Gdx.files.internal("game_music.mp3"));
+        gameMusic.setLooping(true);
+        gameMusic.setVolume(0.1f);
+        gameMusic.play();
+
+        jumpSound = Gdx.audio.newSound(Gdx.files.internal("jump_music.mp3"));
+        jumpSound.setVolume(1, 0.001f);
     }
 
     @Override
@@ -87,11 +100,12 @@ public class GameScreen implements Screen {
             body.applyForceToCenter (new Vector2(100000, 0), true);
             lookRight = true;
             hero.run();
-        } else if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
-            body.applyForceToCenter (new Vector2(0, 150000), true);
+        } else if (Gdx.input.isKeyPressed(Input.Keys.SPACE) && isCanJump) {
+            body.applyForceToCenter (new Vector2(0, 1000000), true);
             hero.jump();
-        } else if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-            camera.position.y -= step;
+            jumpSound.play();
+//        } else if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
+//            camera.position.y -= step;
         } else{
             hero.stay();
         }

@@ -12,6 +12,7 @@ public class Physics {
 
     public Physics() {
         world = new World(new Vector2(0, -9.8f), true);
+        world.setContactListener(new ContList());
         debugRenderer = new Box2DDebugRenderer();
     }
 
@@ -22,7 +23,7 @@ public class Physics {
         FixtureDef fdef = new FixtureDef();
         PolygonShape polygonShape = new PolygonShape();
 
-        switch (type){
+        switch (type) {
             case "StaticBody":
                 def.type = BodyDef.BodyType.StaticBody;
                 break;
@@ -31,7 +32,7 @@ public class Physics {
                 break;
         }
 
-        def.position.set(rect.x + rect.width/2, rect.y + rect.height/2);
+        def.position.set(rect.x + rect.width / 2, rect.y + rect.height / 2);
         def.gravityScale = (float) object.getProperties().get("gravityScale");
 
         polygonShape.setAsBox(rect.width / 2, rect.height / 2);
@@ -42,7 +43,13 @@ public class Physics {
 
         Body body;
         body = world.createBody(def);
-        body.createFixture(fdef).setUserData("Стена");
+        String name = object.getName();
+        body.createFixture(fdef).setUserData(name);
+        if (name != null && name.equals("Герой")) {
+            polygonShape.setAsBox(rect.width / 12, rect.height / 12, new Vector2(0, -rect.width / 2), 0);
+            body.createFixture(fdef).setUserData("Ноги");
+            body.getFixtureList().get(body.getFixtureList().size - 1).setSensor(true);
+        }
 
         polygonShape.dispose();
         return body;
