@@ -9,9 +9,11 @@ import com.badlogic.gdx.physics.box2d.*;
 public class Physics {
     private final World world;
     private final Box2DDebugRenderer debugRenderer;
+    public final float PPM = 100;
 
     public Physics() {
         world = new World(new Vector2(0, -9.8f), true);
+        world.setContactListener(new ContList());
         debugRenderer = new Box2DDebugRenderer();
     }
 
@@ -22,7 +24,7 @@ public class Physics {
         FixtureDef fdef = new FixtureDef();
         PolygonShape polygonShape = new PolygonShape();
 
-        switch (type){
+        switch (type) {
             case "StaticBody":
                 def.type = BodyDef.BodyType.StaticBody;
                 break;
@@ -31,18 +33,26 @@ public class Physics {
                 break;
         }
 
-        def.position.set(rect.x + rect.width/2, rect.y + rect.height/2);
+        def.position.set((rect.x + rect.width / 2) / PPM, (rect.y + rect.height / 2) / PPM);
         def.gravityScale = (float) object.getProperties().get("gravityScale");
 
-        polygonShape.setAsBox(rect.width / 2, rect.height / 2);
+        polygonShape.setAsBox(rect.width / 2 / PPM, rect.height / 2 / PPM);
         fdef.shape = polygonShape;
         fdef.friction = 1;
         fdef.density = 1;
-        fdef.restitution = (float) object.getProperties().get("restitution");
+        fdef.restitution = 0.1f;
+//        fdef.restitution = (float) object.getProperties().get("restitution");
 
         Body body;
         body = world.createBody(def);
-        body.createFixture(fdef).setUserData("Стена");
+        String name = object.getName();
+        body.createFixture(fdef).setUserData(name);
+        if (name != null && name.equals("Герой")) {
+            polygonShape.setAsBox(rect.width / 3 / PPM, rect.height / 12 / PPM, new Vector2(0, -rect.width / 2 / PPM), 0);
+            body.createFixture(fdef).setUserData("Ноги");
+            body.setFixedRotation(true);
+            body.getFixtureList().get(body.getFixtureList().size - 1).setSensor(true);
+        }
 
         polygonShape.dispose();
         return body;

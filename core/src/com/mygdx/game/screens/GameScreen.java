@@ -3,6 +3,8 @@ package com.mygdx.game.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -36,6 +38,9 @@ public class GameScreen implements Screen {
     private final Rectangle heroRect;
     private HeroAnimation hero;
     private boolean lookRight;
+    private Music gameMusic;
+    private Sound jumpSound;
+    public static boolean isCanJump;
 
 
     public GameScreen(Main game) {
@@ -64,6 +69,14 @@ public class GameScreen implements Screen {
         for (RectangleMapObject object : objects) {
             physics.addObject(object);
         }
+
+        gameMusic = Gdx.audio.newMusic(Gdx.files.internal("game_music.mp3"));
+        gameMusic.setLooping(true);
+        gameMusic.setVolume(0.1f);
+        gameMusic.play();
+
+        jumpSound = Gdx.audio.newSound(Gdx.files.internal("jump_music.mp3"));
+        jumpSound.setVolume(1, 0.001f);
     }
 
     @Override
@@ -80,18 +93,19 @@ public class GameScreen implements Screen {
         }
 
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT)){
-            body.applyForceToCenter (new Vector2(-100000, 0), true);
+            body.applyForceToCenter(new Vector2(-2, 0), true);
             lookRight = false;
             hero.run();
         } else if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
-            body.applyForceToCenter (new Vector2(100000, 0), true);
+            body.applyForceToCenter(new Vector2(2, 0), true);
             lookRight = true;
             hero.run();
-        } else if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
-            body.applyForceToCenter (new Vector2(0, 150000), true);
+        } else if (Gdx.input.isKeyPressed(Input.Keys.SPACE) && isCanJump) {
+            body.applyForceToCenter(new Vector2(0, 15), true);
             hero.jump();
-        } else if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-            camera.position.y -= step;
+            jumpSound.play();
+//        } else if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
+//            camera.position.y -= step;
         } else{
             hero.stay();
         }
@@ -103,8 +117,8 @@ public class GameScreen implements Screen {
             hero.getAnimation().getFrame().flip(true,false);
         }
 
-        camera.position.x = body.getPosition().x;
-        camera.position.y = body.getPosition().y;
+        camera.position.x = body.getPosition().x * physics.PPM;
+        camera.position.y = body.getPosition().y * physics.PPM;
         camera.update();
 
         ScreenUtils.clear(Color.DARK_GRAY);
@@ -113,11 +127,15 @@ public class GameScreen implements Screen {
         mapRenderer.render(background);
         mapRenderer.render(l1);
 
-        batch.setProjectionMatrix(camera.combined);
-        heroRect.x = body.getPosition().x - heroRect.width/2;
-        heroRect.y = body.getPosition().y - heroRect.height/2;
+//        batch.setProjectionMatrix(camera.combined);
+        heroRect.x = body.getPosition().x - heroRect.width / 2;
+        heroRect.y = body.getPosition().y - heroRect.height / 2;
+
+        float x = Gdx.graphics.getWidth() / 2 - heroRect.getWidth() / 2 / camera.zoom;
+        float y = Gdx.graphics.getHeight() / 2 - heroRect.getHeight() / 2 / camera.zoom;
+
         batch.begin();
-        batch.draw(hero.getAnimation().getFrame(), heroRect.x, heroRect.y, heroRect.width, heroRect.height);
+        batch.draw(hero.getAnimation().getFrame(), x - 10, y);
         batch.end();
 
         physics.step();
