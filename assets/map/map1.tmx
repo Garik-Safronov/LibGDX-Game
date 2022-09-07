@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" width="64" height="16" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="98">
+<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" width="64" height="16" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="104">
  <tileset firstgid="1" name="t0" tilewidth="32" tileheight="32" tilecount="3072" columns="64">
   <image source="t0.png" width="2048" height="1536"/>
   <tile id="3051">
@@ -225,16 +225,30 @@
     <property name="restitution" type="float" value="1"/>
    </properties>
   </object>
+  <object id="102" name="Стена" x="2043.33" y="1.33333" width="2.66667" height="505.333">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="103" name="Стена" x="0" y="3.33333" width="3.33333" height="507.333">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="1"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="9" name="Сеттинг">
   <object id="47" name="Камера" x="325.167" y="278.667">
    <point/>
   </object>
-  <object id="59" name="Герой" x="60.1136" y="409.242" width="35.4622" height="37.9849">
+  <object id="59" name="Герой" x="95.8571" y="407.248" width="37.4629" height="40.2343" rotation="359.983">
    <properties>
     <property name="BodyType" value="DynamicBody"/>
-    <property name="gravityScale" type="float" value="3"/>
-    <property name="restitution" type="float" value="0.01"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="0.1"/>
    </properties>
   </object>
  </objectgroup>

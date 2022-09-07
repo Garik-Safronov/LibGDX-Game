@@ -93,15 +93,15 @@ public class GameScreen implements Screen {
         }
 
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT)){
-            body.applyForceToCenter (new Vector2(-100000, 0), true);
+            body.applyForceToCenter(new Vector2(-2, 0), true);
             lookRight = false;
             hero.run();
         } else if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
-            body.applyForceToCenter (new Vector2(100000, 0), true);
+            body.applyForceToCenter(new Vector2(2, 0), true);
             lookRight = true;
             hero.run();
         } else if (Gdx.input.isKeyPressed(Input.Keys.SPACE) && isCanJump) {
-            body.applyForceToCenter (new Vector2(0, 1000000), true);
+            body.applyForceToCenter(new Vector2(0, 15), true);
             hero.jump();
             jumpSound.play();
 //        } else if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
@@ -117,8 +117,8 @@ public class GameScreen implements Screen {
             hero.getAnimation().getFrame().flip(true,false);
         }
 
-        camera.position.x = body.getPosition().x;
-        camera.position.y = body.getPosition().y;
+        camera.position.x = body.getPosition().x * physics.PPM;
+        camera.position.y = body.getPosition().y * physics.PPM;
         camera.update();
 
         ScreenUtils.clear(Color.DARK_GRAY);
@@ -127,11 +127,15 @@ public class GameScreen implements Screen {
         mapRenderer.render(background);
         mapRenderer.render(l1);
 
-        batch.setProjectionMatrix(camera.combined);
-        heroRect.x = body.getPosition().x - heroRect.width/2;
-        heroRect.y = body.getPosition().y - heroRect.height/2;
+//        batch.setProjectionMatrix(camera.combined);
+        heroRect.x = body.getPosition().x - heroRect.width / 2;
+        heroRect.y = body.getPosition().y - heroRect.height / 2;
+
+        float x = Gdx.graphics.getWidth() / 2 - heroRect.getWidth() / 2 / camera.zoom;
+        float y = Gdx.graphics.getHeight() / 2 - heroRect.getHeight() / 2 / camera.zoom;
+
         batch.begin();
-        batch.draw(hero.getAnimation().getFrame(), heroRect.x, heroRect.y, heroRect.width, heroRect.height);
+        batch.draw(hero.getAnimation().getFrame(), x - 10, y);
         batch.end();
 
         physics.step();
